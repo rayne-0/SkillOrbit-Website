@@ -1,0 +1,229 @@
+/* ═══════════════════════════════════════════════════════════════
+   LessonCompleteModal.css  —  Celebration modal with confetti
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Overlay ─────────────────────────────────────────────────── */
+.lesson-complete-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlay-fade-in 0.3s ease;
+}
+
+@keyframes overlay-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal Card ──────────────────────────────────────────────── */
+.lesson-complete-modal {
+  background: linear-gradient(160deg, #0f0f1a 0%, #111827 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: calc(100% - 2rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  animation: modal-bounce-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modal-bounce-in {
+  from { transform: scale(0.8) translateY(40px); opacity: 0; }
+  to   { transform: scale(1) translateY(0);      opacity: 1; }
+}
+
+/* ── Confetti ─────────────────────────────────────────────────── */
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall linear infinite;
+}
+
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ── Trophy area ─────────────────────────────────────────────── */
+.lc-trophy {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  animation: trophy-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+  display: block;
+}
+
+@keyframes trophy-bounce {
+  from { transform: scale(0) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
+.lc-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.25rem;
+  background: linear-gradient(135deg, #FFD700, #FF8C00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lc-subtitle {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  margin: 0 0 1.75rem;
+}
+
+/* ── XP / Level row ──────────────────────────────────────────── */
+.lc-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lc-stat-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 0.75rem 1.25rem;
+  min-width: 100px;
+  animation: pill-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both;
+}
+
+@keyframes pill-pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.lc-stat-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FFD700;
+}
+
+.lc-stat-value.xp { color: #a78bfa; }
+.lc-stat-value.green { color: #4ade80; }
+
+.lc-stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Level up banner ─────────────────────────────────────────── */
+.lc-levelup-banner {
+  background: linear-gradient(135deg, rgba(108,71,255,0.2), rgba(0,191,165,0.15));
+  border: 1px solid rgba(108,71,255,0.4);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  color: #c4b5fd;
+  font-size: 0.88rem;
+  font-weight: 600;
+  animation: level-up-flash 0.5s ease 0.5s both;
+}
+
+@keyframes level-up-flash {
+  0%   { transform: scale(0.95); opacity: 0; background: rgba(255,215,0,0.3); }
+  50%  { background: rgba(255,215,0,0.2); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ── New badges ───────────────────────────────────────────────── */
+.lc-new-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.lc-badge-chip {
+  background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 20px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  animation: badge-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Countdown bar ────────────────────────────────────────────── */
+.lc-countdown-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.lc-countdown-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.4rem;
+}
+
+.lc-countdown-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lc-countdown-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6C47FF, #00BFA5);
+  border-radius: 4px;
+  transition: width 1s linear;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.lc-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.lc-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.lc-btn:hover { transform: translateY(-2px); }
+.lc-btn:active { transform: translateY(0); }
+
+.lc-btn-primary {
+  background: linear-gradient(135deg, #6C47FF, #5b3de8);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(108,71,255,0.4);
+}
+
+.lc-btn-secondary {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}

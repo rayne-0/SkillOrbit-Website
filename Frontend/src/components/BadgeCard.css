@@ -1,0 +1,108 @@
+/* ═══════════════════════════════════════════════════════════════
+   BadgeCard.css  —  Gamification badge display card
+   ═══════════════════════════════════════════════════════════════ */
+
+.badge-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-card.earned {
+  background: linear-gradient(145deg, rgba(108,71,255,0.12), rgba(0,191,165,0.08));
+  border-color: rgba(108,71,255,0.3);
+}
+
+.badge-card.earned:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(108,71,255,0.25);
+}
+
+.badge-card.locked {
+  opacity: 0.45;
+  filter: grayscale(60%);
+}
+
+/* Shimmer on earned badges */
+.badge-card.earned::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 70%
+  );
+  animation: badge-shimmer 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes badge-shimmer {
+  0%   { transform: rotate(0deg) translateX(-100%); }
+  100% { transform: rotate(0deg) translateX(100%); }
+}
+
+.badge-icon {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.badge-card.earned .badge-icon {
+  animation: badge-float 3s ease-in-out infinite;
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-3px); }
+}
+
+.badge-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.badge-card.locked .badge-name { color: rgba(255,255,255,0.4); }
+
+.badge-desc {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+}
+
+.badge-earned-mark {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.badge-lock-icon {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.2);
+}

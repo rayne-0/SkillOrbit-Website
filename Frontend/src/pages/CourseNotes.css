@@ -1,0 +1,135 @@
+/* ================================================================
+   CourseNotes.css — All Notes Page
+   ================================================================ */
+.notes-page { background: var(--bg-off); min-height: 100vh; }
+.notes-page-header {
+  background: linear-gradient(135deg, #1B1F3A, #0d1b4b);
+  padding: 2rem 0;
+  color: #fff;
+}
+.notes-page-header h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+.notes-page-header p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.notes-header-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+
+.notes-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem 0 4rem;
+}
+
+/* Filter sidebar */
+.notes-filter-sidebar { align-self: start; position: sticky; top: calc(var(--nav-height) + 1rem); }
+.notes-filter-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; }
+.notes-filter-card h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 0.85rem; }
+.notes-module-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.nf-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  transition: all var(--transition);
+}
+.nf-item:hover { background: var(--bg-light); }
+.nf-item.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+.nf-count { font-size: 0.72rem; background: var(--bg-light); border-radius: var(--radius-full); padding: 0.1rem 0.45rem; color: var(--text-muted); }
+.nf-item.active .nf-count { background: var(--primary); color: #fff; }
+
+/* Main notes area */
+.notes-main {}
+.notes-search-bar {
+  display: flex;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.notes-search-bar input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  font-family: var(--font);
+}
+.notes-search-bar button {
+  padding: 0.75rem 1.25rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Note group */
+.note-group { margin-bottom: 2rem; }
+.note-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border);
+}
+.note-group-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.note-group-title { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
+
+/* Full note card */
+.full-note-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  transition: all var(--transition);
+}
+.full-note-card:hover { box-shadow: var(--shadow-md); }
+.fnc-header {
+  background: var(--bg-light);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.fnc-lesson-name { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+.fnc-timestamp { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+.fnc-body { padding: 1rem 1.25rem; }
+.fnc-note-text { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; }
+.fnc-footer { padding: 0.6rem 1.25rem; border-top: 1px solid var(--border-light); display: flex; gap: 0.5rem; justify-content: flex-end; }
+.fnc-btn { background: none; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.25rem 0.7rem; font-size: 0.78rem; color: var(--text-mid); font-family: var(--font); cursor: pointer; transition: all var(--transition); }
+.fnc-btn:hover { background: var(--bg-light); color: var(--text-dark); border-color: var(--text-light); }
+.fnc-btn.danger:hover { background: #fee2e2; color: var(--red); border-color: var(--red); }
+
+/* Empty state */
+.notes-empty { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+.notes-empty .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+.notes-empty h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+.notes-empty p { font-size: 0.875rem; margin-bottom: 1.5rem; }
+
+@media (max-width: 768px) {
+  .notes-layout { grid-template-columns: 1fr; }
+  .notes-filter-sidebar { position: static; }
+}
