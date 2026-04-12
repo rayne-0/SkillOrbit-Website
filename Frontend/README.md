@@ -1,6 +1,8 @@
-# React + Vite
+# SkillOrbit Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 **Live Deployment:** [https://skill-orbit-website.vercel.app/](https://skill-orbit-website.vercel.app/)
+
+This project is the React frontend for the SkillOrbit platform.
 
 Currently, two official plugins are available:
 
