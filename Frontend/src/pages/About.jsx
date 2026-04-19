@@ -7,7 +7,7 @@ const TEAM = [
   { name: 'Shivam Thakur', role: 'Founder', initials: 'ST', color: '#0056D2', bio: 'Shivam is the mind behind Skill Orbit. With a deep passion for technology and innovation, he laid the foundation of this startup with a mission to make technical learning more accessible and practical. His leadership and vision continue to inspire the entire team to aim higher every day.' },
   { name: 'Anurag Roy', role: 'Director', initials: 'AR', color: '#7c3aed', bio: 'Anurag plays a vital role in managing the overall operations of Skill Orbit. From strategic planning to ensuring smooth execution of projects, his strong management skills and creative approach help the team stay focused and organized.' },
   { name: 'Roshan Kumar', role: 'Managing Director', initials: 'RK', color: '#00BFA5', bio: 'Roshan oversees the direction and development of various initiatives within the startup. His guidance, technical insights, and commitment to excellence ensure that Skill Orbit always maintains the highest standards in every project undertaken.' },
-  { name: 'Sahil Kumar', role: 'Marketing Head', initials: 'SK', color: '#F5A623', bio: 'Sahil plays a crucial role in market management and traffic control and oversees the security algorithm.' },
+  { name: 'Sahil Kumar', role: 'Marketing Director', initials: 'SK', color: '#F5A623', bio: 'Sahil plays a crucial role in market management and traffic control and oversees the security algorithm.' },
 ];
 
 const VALUES = [
