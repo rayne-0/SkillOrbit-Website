@@ -8,6 +8,11 @@ interface User {
   name: string
   email: string
   is_admin: boolean
+  avatar?: string
+  phone?: string
+  bio?: string
+  enrolledCourses?: string[]
+  courseProgress?: Record<string, number>
 }
 
 interface Tokens {
@@ -96,6 +101,34 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null
   }
 
+  async function updateProfile(fields: Partial<Pick<User, 'name' | 'phone' | 'bio' | 'avatar'>>) {
+    if (!user.value) return
+    try {
+      const res = await fetch(`${API_BASE}/me/`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${tokens.value?.access}`,
+        },
+        body: JSON.stringify(fields),
+      })
+      // Merge locally even if backend is offline in dev
+      user.value = { ...user.value, ...fields }
+      if (res.ok) {
+        const data = await res.json()
+        if (data.user) user.value = data.user
+      }
+    } catch { /* offline — still update locally */ }
+  }
+
+  async function uploadAvatar(file: File): Promise<string> {
+    // In production: upload to S3/Django and return the URL.
+    // During development: create an object URL for instant preview.
+    const url = URL.createObjectURL(file)
+    await updateProfile({ avatar: url })
+    return url
+  }
+
   async function requestOtp(email: string) {
     const res = await fetch(`${API_BASE}/forgot-password/`, {
       method: 'POST',
@@ -136,5 +169,6 @@ export const useAuthStore = defineStore('auth', () => {
     user, tokens, loading, isAuthenticated,
     login, signup, googleLogin, logout,
     requestOtp, verifyOtp, resetPassword,
+    updateProfile, uploadAvatar,
   }
 })

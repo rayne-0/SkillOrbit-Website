@@ -148,22 +148,21 @@
           </div>
           
           <!-- PROJECT SUBMISSION (ASSIGNMENT) -->
-          <div v-else-if="lesson.type === 'assignment'" class="max-w-4xl mx-auto w-full px-10 py-16 animate-fade-up">
+          <div v-else-if="lesson.type === 'assignment'" class="max-w-4xl mx-auto w-full px-10 py-16">
             <div class="bg-white dark:bg-surface-900 p-12 rounded-2xl shadow-xl border border-gray-100 dark:border-white/5">
-               <div class="flex items-center gap-6 mb-12">
+               <div class="flex items-center gap-6 mb-10">
                  <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 flex items-center justify-center text-2xl rounded-xl">📎</div>
                  <div>
                    <div class="text-[10px] font-bold text-indigo-500 uppercase tracking-[0.3em] mb-1">Project Milestone</div>
                    <h1 class="text-3xl font-black text-gray-900 dark:text-white tracking-tight">{{ lesson.title }}</h1>
                  </div>
                </div>
-               
-               <div class="prose prose-blue dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 mb-12 font-medium" v-html="lesson.content" />
-               
-               <div class="p-6 bg-gray-50 dark:bg-white/5 border border-dashed border-gray-300 dark:border-white/20 rounded-xl text-center">
-                 <p class="text-sm font-medium text-gray-500 mb-4">Please submit your project files below.</p>
-                 <button @click="markComplete" class="btn-primary py-2 px-6 shadow-md shadow-primary/20">Submit Assignment</button>
-               </div>
+               <div class="prose prose-blue dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 mb-10 font-medium" v-html="lesson.content" />
+               <AssignmentUploader
+                 :assignment-id="lessonId"
+                 :assignment-title="lesson.title"
+                 :course-name="course?.title"
+                 @submitted="markComplete" />
             </div>
           </div>
 
@@ -227,6 +226,7 @@ import LessonCompleteModal from '../components/LessonCompleteModal.vue'
 import XPBar from '../components/XPBar.vue'
 import QuizPlayer from '../components/QuizPlayer.vue'
 import AIMentor from '../components/AIMentor.vue'
+import AssignmentUploader from '../components/AssignmentUploader.vue'
 
 const route = useRoute()
 const router = useRouter()
