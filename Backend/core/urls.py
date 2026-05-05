@@ -24,4 +24,7 @@ urlpatterns = [
     path('api/payments/', include('payments.urls')),
     path('api/gamification/', include('gamification.urls')),
     path('api/chatbot/', include('chatbot.urls')),
+    path('api/assignments/', include('assignments.urls')),
+    path('api/announcements/', include('announcements.urls')),
+    path('api/mentors/', include('mentors.urls')),
 ]

@@ -3,6 +3,9 @@ import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 import AdminCourses from './AdminCourses';
+import AdminUsers from './AdminUsers';
+import AdminFinancials from './AdminFinancials';
+import AdminSettings from './AdminSettings';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
@@ -86,7 +89,7 @@ export default function AdminDashboard() {
                 className={`admin-nav-item ${activeNav === 'users' ? 'active' : ''}`}
                 onClick={() => setActiveNav('users')}
               >
-                <span>👥</span> Manage Users
+                <span style={{width: '24px'}}>👥</span> <span>Manage Users</span>
               </div>
               <div 
                 className={`admin-nav-item ${activeNav === 'revenue' ? 'active' : ''}`}
@@ -184,6 +187,12 @@ export default function AdminDashboard() {
               </>
             ) : activeNav === 'courses' ? (
               <AdminCourses />
+            ) : activeNav === 'users' ? (
+              <AdminUsers />
+            ) : activeNav === 'revenue' ? (
+              <AdminFinancials />
+            ) : activeNav === 'settings' ? (
+              <AdminSettings />
             ) : (
               <div className="admin-card" style={{ padding: '4rem 2rem', textAlign: 'center' }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.5 }}>🚧</div>
